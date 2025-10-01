@@ -1,4 +1,5 @@
 ﻿using Logistics.Application.Clients.ShipmentClient;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,7 @@ namespace Logistics.Web.Controllers.Api
 {
     [Route("api/shipments")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ShipmentsController(IShipmentClient shipmentClient) : ControllerBase
     {
         [HttpGet("{orderId:int}/status")]

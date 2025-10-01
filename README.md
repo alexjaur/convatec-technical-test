@@ -1,5 +1,34 @@
 # Logistics App by Alexander Cubillos Jauregui (git username: al3xjaur)
 
+## Migrations
+
+### EF Core migrations
+
+```bash
+dotnet ef migrations add InitialCreate -p Logistics.Infrastructure -s Logistics.Web
+dotnet ef database update -p Logistics.Infrastructure -s Logistics.Web
+```
+
+## Web App protegida
+
+Solicitara registro o autenticacion de usuario para acceder al sitio web (Logistics.Web)
+
+## API protegida
+
+Para facilitar las pruebas se habilita swagger.
+
+Desde swagger se habilita una boton en la parte superior derecha llamado "Authorize".
+
+![alt text](docs/imgs/swagger-01.png)
+
+Dejar los valores por defecto y dar click en el boton "Authorize", tal y como se muestra a continuacion.
+
+![alt text](docs/imgs/swagger-02.png)
+
+Despues de esto, proceder a probar los endpoints que estan protegidos
+
+![alt text](docs/imgs/swagger-03.png)
+
 ## Clean Architecture / Onion
 
 Es un enfoque que organiza el código en capas concéntricas, separando la lógica de negocio del acceso a datos y la infraestructura. Las dependencias siempre apuntan hacia el núcleo, lo que facilita el mantenimiento, las pruebas y la escalabilidad del sistema.
@@ -130,12 +159,3 @@ Secrets requeridos:
 - AZURE_PUBLISH_PROFILE: contenido del Publish Profile XML del Web App.
 
 - Azure App Settings: conexión DB y AzureAdB2C config (set en Azure portal).
-
-## Migrations
-
-### EF Core migrations
-
-```bash
-dotnet ef migrations add InitialCreate -p Logistics.Infrastructure -s Logistics.Web
-dotnet ef database update -p Logistics.Infrastructure -s Logistics.Web
-```

@@ -1,14 +1,14 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Logistics.Web.Models;
-using Microsoft.AspNetCore.Authorization;
 using Logistics.Application.Services;
 using Logistics.Domain.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Logistics.Web.Controllers.Api;
 
 [Route("api/transporters")]
 [ApiController]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class TransportersApiController(ITransporterService transporterService, ILogger<TransportersApiController> logger) : ControllerBase
 {
     [HttpGet]

@@ -1,12 +1,12 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Logistics.Web.Models;
-using Microsoft.AspNetCore.Authorization;
 using Logistics.Application.Services;
 using Logistics.Domain.Entities;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Logistics.Web.Controllers;
 
+[Authorize(AuthenticationSchemes = OpenIdConnectDefaults.AuthenticationScheme)]
 public class TransportersController(ITransporterService transporterService, ILogger<TransportersController> logger) : Controller
 {
     public async Task<IActionResult> Index() 
